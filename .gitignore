@@ -1,0 +1,6 @@
+# Lilypond
+target/
+
+# Emacs
+**/*~
+**/#*#
