@@ -59,18 +59,12 @@ A-fill = \drummode << {
   >>
 
 A = \drummode {
-  <<
-    {
-      cymca4 <hh sn>4 hh4 <hh sn>4
-    } \\ \A-f
-  >>
-  \repeat percent 2 \A-p
+  \repeat percent 3 \A-p
   << \A-h \\ { bd4. 8 8 4 8 } >>
   \repeat percent 3 \A-p
+  \A-fill \bar "||"
+  \repeat percent 7 \A-p
   \A-fill
-    \bar "||"
-    \repeat percent 7 \A-p
-    \A-fill
 }
 
 \new DrumStaff {
