@@ -87,10 +87,15 @@ B = \drummode {
 
 \new DrumStaff {
   \set DrumStaff.drumStyleTable = #(alist->hash-table mydrums)
-  \time 4/4
-  \tempo 4 = 120
-  \intro
-  \A.1
-  \A.2
-  \B
+  <<
+    \override Score.SpacingSpanner.shortest-duration-space = #3
+    {
+      \time 4/4
+      \tempo 4 = 120
+      \intro
+      \A.1
+      \A.2
+      \B
+    }
+  >>
 }
