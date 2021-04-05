@@ -68,13 +68,13 @@ A.2 = \drummode {
 }
 B = \drummode {
   << { r4 sn8 cymca8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymca4 sn8 cymca8~ 4 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymca4 <hh sn> cymr8 8 8 8 } \\ \A-f >>
+  << { cymca4 sn8 cymca8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  << { cymca4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
   << { \repeat unfold 8 cymr8 } \\ \A-f >>
   << { cymca4 sn8 cymca8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymca4 sn8 cymca8~ 4 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymca4 <hh sn> cymr8 8 8 8 } \\ \A-f >>
-  << { cymr8 8 8 8 8 <cymca sn>8 4 } \\ { bd4. 8 4 r } >> \bar "||"
+  << { cymca4 sn8 cymca8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  << { cymca4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
+  << { cymr8 8 8 8 8 <cymca sn>8^> 4^> } \\ { bd4. 8 4 r } >> \bar "||"
 }
 
 \new DrumStaff {
