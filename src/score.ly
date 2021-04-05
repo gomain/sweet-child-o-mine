@@ -46,21 +46,24 @@ intro = {
 A-h = \drummode { hh4 <hh sn>^> hh <hh sn>^> }
 A-f = \drummode { bd4. 8 4. 8 }
 A-p = << \A-h \\ \A-f >>
-A-fill = \drummode <<
-  {
-    hh8 <cymca sn>8^> hh8 8 <sn cymca>4^> 4^>
-  } \\ {
-    bd4. 8~ 8 4 8
-  }
->>
+A-fill = \drummode {
+  << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ \A-f >>
+  <<
+    {
+      cymr8 <cymca sn>8^> cymr8 8 <sn cymca>4^> 4^>
+    } \\ {
+      bd4. 8~ 8 4 8
+    }
+  >>
+}
 A.1 = \drummode {
   \repeat percent 3 \A-p
   << \A-h \\ { bd4. 8 8 4 8 } >>
-  \repeat percent 3 \A-p
+  \repeat percent 2 \A-p
   \A-fill \bar "||"
 }
 A.2 = \drummode {
-  \repeat percent 7 \A-p
+  \repeat percent 6 \A-p
   \A-fill \bar "||"
 }
 B = \drummode {
