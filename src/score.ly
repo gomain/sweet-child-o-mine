@@ -16,7 +16,7 @@ intro-guitar =  {
 intro-drums = \drummode {
   \repeat percent 3 <<
     {
-      cymca4^> hh4 4 8 cymr16 16
+      cymc4^> hh4 4 8 cymr16 16
       cymr4 hh4 4 8 cymr16 16
     } \\ {
       bd1~
@@ -25,7 +25,7 @@ intro-drums = \drummode {
   >>
   {
     \stemUp {
-      <cymca sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
+      <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
       \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
         {
           <sn tomfh>4 \grace sn8 sn4
@@ -50,7 +50,7 @@ A-fill = \drummode {
   << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ \A-f >>
   <<
     {
-      cymr8 <cymca sn>8^> cymr8 8 <sn cymca>4^> 4^>
+      cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^>
     } \\ {
       bd4. 8~ 8 4 8
     }
@@ -67,14 +67,14 @@ A.2 = \drummode {
   \A-fill \bar "||"
 }
 B = \drummode {
-  << { r4 sn8 cymca8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymca4 sn8 cymca8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymca4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
+  << { r4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  << { cymc4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
   << { \repeat unfold 8 cymr8 } \\ \A-f >>
-  << { cymca4 sn8 cymca8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymca4 sn8 cymca8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymca4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
-  << { cymr8 8 8 8 8 <cymca sn>8^> 4^> } \\ { bd4. 8 4 r } >> \bar "||"
+  << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  << { cymc4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
+  << { cymr8 8 8 8 8 <cymc sn>8^> 4^> } \\ { bd4. 8 4 r } >> \bar "||"
 }
 
 \new DrumStaff {
