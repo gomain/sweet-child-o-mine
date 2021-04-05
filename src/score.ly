@@ -53,18 +53,21 @@ A-fill = \drummode <<
     bd4. 8~ 8 4 8
   }
 >>
-A = \drummode {
+A.1 = \drummode {
   \repeat percent 3 \A-p
   << \A-h \\ { bd4. 8 8 4 8 } >>
   \repeat percent 3 \A-p
   \A-fill \bar "||"
+}
+A.2 = \drummode {
   \repeat percent 7 \A-p
-  \A-fill
+  \A-fill \bar "||"
 }
 
 \new DrumStaff {
   \time 4/4
   \tempo 4 = 120
   \intro
-  \A
+  \A.1
+  \A.2
 }
