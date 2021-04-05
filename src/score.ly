@@ -25,10 +25,10 @@ intro-drums = \drummode {
   >>
   {
     \stemUp {
-      <cymca bd>8 \repeat unfold 7 <tomfh bd>
-      \repeat unfold 4 <tomfh bd> } <<
+      <cymca sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
+      \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
         {
-          tomfh4 \grace sn8 sn4
+          <sn tomfh>4 \grace sn8 sn4
         } \\
         {
           r8 bd4 bd8
