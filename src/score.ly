@@ -48,7 +48,7 @@ A-f = \drummode { bd4. 8 4. 8 }
 A-p = << \A-h \\ \A-f >>
 A-fill = \drummode <<
   {
-    hh8 <hh sn>8 hh8 8 <sn cymca>4 4
+    hh8 <cymca sn>8 hh8 8 <sn cymca>4 4
   } \\ {
     bd4. 8~ 8 4 8
   }
