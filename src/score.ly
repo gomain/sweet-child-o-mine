@@ -1,3 +1,11 @@
+#(define mydrums '(
+  (hihat cross #f 5)
+  (ridecymbal cross #f 4)
+  (crashcymbal cross #f 6)
+  (bassdrum default #f -3)
+  (snare default #f 1)
+  (highfloortom default #f -1)))
+
 \version "2.22.0"
 \header {
   title = "Sweet Child O'Mine"
@@ -78,6 +86,7 @@ B = \drummode {
 }
 
 \new DrumStaff {
+  \set DrumStaff.drumStyleTable = #(alist->hash-table mydrums)
   \time 4/4
   \tempo 4 = 120
   \intro
