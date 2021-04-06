@@ -12,6 +12,11 @@
   composer = "Guns N' Roses"
 }
 \layout {
+  \context {
+    \DrumStaff
+    drumStyleTable = #(alist->hash-table mydrums)
+  }
+  \override Score.SpacingSpanner.shortest-duration-space = #3
 }
 
 intro-guitar =  {
@@ -86,16 +91,10 @@ B = \drummode {
 }
 
 \new DrumStaff {
-  \set DrumStaff.drumStyleTable = #(alist->hash-table mydrums)
-  <<
-    \override Score.SpacingSpanner.shortest-duration-space = #3
-    {
-      \time 4/4
-      \tempo 4 = 120
-      \intro
-      \A.1
-      \A.2
-      \B
-    }
-  >>
+  \time 4/4
+  \tempo 4 = 120
+  \intro
+  \A.1
+  \A.2
+  \B
 }
