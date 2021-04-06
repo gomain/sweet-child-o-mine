@@ -7,17 +7,6 @@
   (highfloortom default #f -1)))
 
 \version "2.22.0"
-\header {
-  title = "Sweet Child O'Mine"
-  composer = "Guns N' Roses"
-}
-\layout {
-  \context {
-    \DrumStaff
-    drumStyleTable = #(alist->hash-table mydrums)
-  }
-  \override Score.SpacingSpanner.shortest-duration-space = #3
-}
 
 intro-guitar =  {
   \compressMMRests {
@@ -90,11 +79,26 @@ B = \drummode {
   << { cymr8 8 8 8 8 <cymc sn>8^> 4^> } \\ { bd4. 8 4 r } >> \bar "||"
 }
 
-\new DrumStaff {
-  \time 4/4
-  \tempo 4 = 120
-  \intro
-  \A.1
-  \A.2
-  \B
+\book {
+  \score {
+    \header {
+      title = "Sweet Child O'Mine"
+      composer = "Guns N' Roses"
+    }
+    \new DrumStaff {
+      \time 4/4
+      \tempo 4 = 120
+      \intro
+      \A.1
+      \A.2
+      \B
+    }
+    \layout {
+      \context {
+        \DrumStaff
+        drumStyleTable = #(alist->hash-table mydrums)
+      }
+      \override Score.SpacingSpanner.shortest-duration-space = #3
+    }
+  }
 }
