@@ -8,7 +8,9 @@
 
 \version "2.22.0"
 \include "drums.ly"
-
+\paper {
+  system-system-spacing.basic-distance = #15
+}
 \book {
   \score {
     \header {
