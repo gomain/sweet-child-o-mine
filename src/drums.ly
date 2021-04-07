@@ -27,7 +27,6 @@ intro-drums = \drummode {
         }
       >>
   }
-  \bar "||"
 }
 
 intro = {
@@ -52,11 +51,11 @@ A.1 = \drummode {
   \repeat percent 3 \A-p
   << \A-h \\ { bd4. 8 8 4 8 } >>
   \repeat percent 2 \A-p
-  \A-fill \bar "||"
+  \A-fill
 }
 A.2 = \drummode {
   \repeat percent 6 \A-p
-  \A-fill \bar "||"
+  \A-fill
 }
 B = \drummode {
   << { r4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
@@ -66,12 +65,12 @@ B = \drummode {
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
   << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
   << { cymc4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
-  << { cymr8 8 8 8 8 <cymc sn>8^> 4^> } \\ { bd4. 8 4 r } >> \bar "||"
+  << { cymr8 8 8 8 8 <cymc sn>8^> 4^> } \\ { bd4. 8 4 r } >>
 }
 
 drumsMusic = {
-  \intro
-  \A.1
-  \A.2
-  \B
+  \intro \bar "||"
+  \A.1 \bar "||"
+  \A.2 \bar "||"
+  \B \bar "||"
 }
