@@ -47,14 +47,15 @@ A-fill = \drummode {
     }
   >>
 }
-A.1 = \drummode {
-  \repeat percent 3 \A-p
-  << \A-h \\ { bd4. 8 8 4 8 } >>
-  \repeat percent 2 \A-p
-  \A-fill
-}
-A.2 = \drummode {
-  \repeat percent 6 \A-p
+A = \drummode {
+  <<
+    \repeat percent 6 \A-p \\
+    \new DrumVoice \with { fontSize = #-3 } {
+      \repeat unfold 3 s1
+      { \voiceTwo bd4._\markup { \italic "first round" } 8 bd8 4 8 }
+      \repeat unfold 2 s1
+    }
+  >>
   \A-fill
 }
 B = \drummode {
@@ -69,8 +70,7 @@ B = \drummode {
 }
 
 drumsMusic = {
-  \intro \bar "||"
-  \A.1 \bar "||"
-  \A.2 \bar "||"
+  \intro
+  \repeat volta 2 \A
   \B \bar "||"
 }
