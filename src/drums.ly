@@ -61,12 +61,12 @@ A = \drummode {
 B = \drummode {
   << { r4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
   << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymc4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
-  << { \repeat unfold 8 cymr8 } \\ \A-f >>
+  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+  << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\ \A-f >>
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
   << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymc4 <hh sn>8 hh cymr8 8 8 8 } \\ \A-f >>
-  << { cymr8 8 8 8 8 <cymc sn>8^> 4^> } \\ { bd4. 8 4 r } >>
+  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+  << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
 }
 
 drumsMusic = {
