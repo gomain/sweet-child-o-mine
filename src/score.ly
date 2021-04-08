@@ -13,11 +13,13 @@
   markup-system-spacing.basic-distance = #15
   system-system-spacing.basic-distance = #15
   print-all-headers = ##t
+  #(include-special-characters)
   oddFooterMarkup = \markup {
     \fill-line {
       \center-column {
-        \line { Transcribed by Joe Gomain Hoyes - gomain@gmail.com }
-        \line \small { Music engraving by LiliyPond 2.22.0 - www.lilypond.org }
+        \line { &copyright; All rights ignored.
+                Transcribed by Joe Gomain Hoyes &ndash; gomain@gmail.com }
+        \line \small { Music engraving by LiliyPond 2.22.0 &ndash; www.lilypond.org }
       }
     }
   }
