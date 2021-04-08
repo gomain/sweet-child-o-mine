@@ -9,7 +9,19 @@
 \version "2.22.0"
 \include "drums.ly"
 \paper {
+  top-margin = #12
+  markup-system-spacing.basic-distance = #15
   system-system-spacing.basic-distance = #15
+  print-all-headers = ##t
+  oddFooterMarkup = \markup {
+    \fill-line {
+      \center-column {
+        \line { Transcribed by Joe Gomain Hoyes - gomain@gmail.com }
+        \line \small { Music engraving by LiliyPond 2.22.0 - www.lilypond.org }
+      }
+    }
+  }
+  evenFooterMarkup = \oddFooterMarkup
 }
 \book {
   \score {
