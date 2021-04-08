@@ -76,16 +76,26 @@ InstruOne = \drummode {
   \AFill
 }
 
-drumsMusic = \displayMusic \drummode {
-  \intro
-  \repeat volta 2 << \A \\
-    \new DrumVoice \with { fontSize = #-3 } {
-      s1*3
-      { \voiceTwo bd4._\markup \italic { first round } 8 8 4 8 }
-    }
-  >>
-  \B \bar "||"
-  \InstruOne
-  \repeat volta 2 \A
-  \repeat valto 2 \B
-}
+drumsMusic = \drummode <<
+  {
+    \intro
+    <<
+      \repeat volta 2 \A
+      \context Staff = "ossia" {
+        s1*3 \startStaff
+        \new DrumVoice{ \voiceTwo bd4._\markup \italic { first round } 8 8 4 8 }
+        \stopStaff
+      }
+    >>
+    \B \bar "||"
+    \InstruOne
+    \repeat volta 2 \A
+    \repeat volta 2 \B
+  }
+  \new DrumStaff = "ossia" \with {
+    \remove "Time_signature_engraver"
+    \hide Clef
+    \magnifyStaff #2/3
+    \RemoveAllEmptyStaves
+  } { \stopStaff s1*56 }
+>>
