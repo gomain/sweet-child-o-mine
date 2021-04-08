@@ -37,25 +37,21 @@ intro = {
 A-h = \drummode { hh4 <hh sn>^> hh <hh sn>^> }
 A-f = \drummode { bd4. 8 4. 8 }
 A-p = << \A-h \\ \A-f >>
-A-fill = \drummode {
-  << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ \A-f >>
-  <<
-    {
-      cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^>
-    } \\ {
-      bd4. 8~ 8 4 8
-    }
-  >>
+APreFill = \drummode << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ \A-f >>
+AFill = \drummode <<
+  {
+    cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^>
+  } \\ {
+    bd4. 8~ 8 4 8
+  }
+>>
+
+A-fill = {
+  \APreFill
+  \AFill
 }
 A = \drummode {
-  <<
-    \repeat percent 6 \A-p \\
-    \new DrumVoice \with { fontSize = #-3 } {
-      \repeat unfold 3 s1
-      { \voiceTwo bd4._\markup { \italic "first round" } 8 bd8 4 8 }
-      \repeat unfold 2 s1
-    }
-  >>
+  \repeat percent 6 \A-p 
   \A-fill
 }
 B = \drummode {
@@ -68,9 +64,28 @@ B = \drummode {
   << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
   << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
 }
+InstruOneHandsHalfBar = \drummode { cymr8 8 <cymr sn> cymr }
+InstruOneHands = \drummode { \repeat unfold 2 \InstruOneHandsHalfBar }
+InstruOneFeet = \drummode { bd2 4. 8 }
+InstruOnePattern = << \InstruOneHands \\ \InstruOneFeet >>
+InstruOne = \drummode {
+  << { cymc8 cymr8 <cymr sn> cymr \InstruOneHandsHalfBar } \\ \InstruOneFeet >>
+  \repeat percent 2 \InstruOnePattern
+  \repeat percent 3 << \InstruOneHands \\ { bd4. 8 2 } >>
+  << \InstruOneHands \\ \A-f >>
+  \AFill
+}
 
-drumsMusic = {
+drumsMusic = \displayMusic \drummode {
   \intro
-  \repeat volta 2 \A
+  \repeat volta 2 << \A \\
+    \new DrumVoice \with { fontSize = #-3 } {
+      s1*3
+      { \voiceTwo bd4._\markup \italic { first round } 8 8 4 8 }
+    }
+  >>
   \B \bar "||"
+  \InstruOne
+  \repeat volta 2 \A
+  \repeat valto 2 \B
 }
