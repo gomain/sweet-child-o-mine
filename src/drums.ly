@@ -83,7 +83,8 @@ drumsMusic = \drummode <<
       \repeat volta 2 \A
       \context Staff = "ossia" {
         s1*3 \startStaff
-        \new DrumVoice{ \voiceTwo bd4._\markup \italic { first round } 8 8 4 8 }
+        <>^\markup \italic { first round }
+        << \A-h \\ { bd4. 8 8 4 8 } >>
         \stopStaff
       }
     >>

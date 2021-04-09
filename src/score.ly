@@ -40,8 +40,16 @@
       \context {
         \DrumStaff
         drumStyleTable = #(alist->hash-table mydrums)
+        \override VerticalAxisGroup.default-staff-staff-spacing =
+        #'((basic-distance . 6)
+           (minimum-distance . 5)
+           (padding . 2)
+           (stretchability . 10))
       }
-      \override Score.SpacingSpanner.shortest-duration-space = #3
+      \context {
+        \Score
+        \override SpacingSpanner.shortest-duration-space = #3
+      }
     }
   }
 }
