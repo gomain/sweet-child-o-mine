@@ -8,8 +8,8 @@ intro-guitar =  {
 intro-drums = \drummode {
   \repeat percent 3 <<
     {
-      cymc4^> hh4 4 8 cymr16 16
-      cymr4 hh4 4 8 cymr16 16
+      cymc4^> hh4 4 8 \tuplet 3/2 { cymr16 16 16 }
+      cymr4 hh4 4 4
     } \\ {
       bd1~
       1
