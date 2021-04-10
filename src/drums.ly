@@ -37,7 +37,7 @@ intro = {
 A-h = \drummode { hh4 <hh sn>^> hh <hh sn>^> }
 A-f = \drummode { bd4. 8 4. 8 }
 A-p = << \A-h \\ \A-f >>
-APreFill = \drummode << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ \A-f >>
+APreFill = \drummode << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ { bd4. 8 2 } >>
 AFill = \drummode <<
   {
     cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^>
