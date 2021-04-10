@@ -3,7 +3,20 @@ intro-guitar =  {
     <>_\markup { \italic "Guitar solo..." }
     \override MultiMeasureRest.expand-limit = #1 R1*8  }
     \bar "||"
+}
+BuildUp = \drummode {
+  \stemUp {
+      <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
+      \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
+        {
+          <sn tomfh>4 \grace sn8 sn4^>
+        } \\
+        {
+          r8 \tag #'intro { bd4 bd8 } \tag #'pre-solo { bd4. }
+        }
+      >>
   }
+
 
 intro-drums = \drummode {
   \repeat percent 3 <<
@@ -15,18 +28,7 @@ intro-drums = \drummode {
       1
     }
   >>
-  {
-    \stemUp {
-      <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
-      \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
-        {
-          <sn tomfh>4 \grace sn8 sn4
-        } \\
-        {
-          r8 bd4 bd8
-        }
-      >>
-  }
+  \keepWithTag #'intro \BuildUp
 }
 
 intro = {
@@ -87,22 +89,8 @@ BFirstSix = \drummode {
   << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
 }
 BLastTwo = \drummode {
-  \tag #'normal {
-    << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
-    << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
-  }
-  \tag #'pre-solo {
-      \stemUp {
-        <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
-        \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
-          {
-            <sn tomfh>4 \grace sn8 sn4
-          } \\
-          {
-            r8 bd4 bd8
-          }
-        >>
-      }
+  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+  << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
 }
 B = {
   \BFirstSix
@@ -123,13 +111,13 @@ InstruOne = \drummode {
 drumsMusic = \drummode {
   \intro
   \repeat volta 2 \keepWithTag #'first-round \A
-  \keepWithTag #'(first-round normal) \B
+  \keepWithTag #'first-round \B
   \bar "||"
   \InstruOne
   \repeat volta 2 \keepWithTag #'second-round \A
   \repeat volta 2 \keepWithTag #'second-round \BFirstSix
   \alternative {
-    \keepWithTag #'normal \BLastTwo
-    \keepWithTag #'pre-solo \BLastTwo
+    \BLastTwo
+    \keepWithTag #'pre-solo \BuildUp
   }
 }
