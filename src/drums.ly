@@ -50,19 +50,63 @@ A-fill = {
   \APreFill
   \AFill
 }
-A = \drummode {
-  \repeat percent 6 \A-p 
-  \A-fill
-}
-B = \drummode {
-  << { r4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
-  << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\ \A-f >>
+A = \drummode <<
+  {
+    \repeat percent 6 \A-p
+    \A-fill
+  }
+  \new DrumVoice { \voiceFour \magnifyMusic #2/3 {
+    s1*3
+    \tag #'first-round {
+      <>_\markup \italic { first time }
+    }
+    \tag #'second-round {
+      <>_\markup \italic { second time }
+    }
+    bd4. 8 8 4 8
+
+  }}
+>>
+BFirstSix = \drummode {
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  \tag #'first-round << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
+  \tag #'second-round << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
   << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
-  << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
+  << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\
+     { bd4. 8 2 } \\
+     \tag #'second-round {
+       \voiceFour
+       \magnifyMusic #2/3 {
+         s2
+         <>_\markup \italic { second time }
+         bd8 4 8
+       }
+     }
+  >>
+  << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
+}
+BLastTwo = \drummode {
+  \tag #'normal {
+    << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+    << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
+  }
+  \tag #'pre-solo {
+      \stemUp {
+        <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
+        \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
+          {
+            <sn tomfh>4 \grace sn8 sn4
+          } \\
+          {
+            r8 bd4 bd8
+          }
+        >>
+      }
+}
+B = {
+  \BFirstSix
+  \BLastTwo
 }
 InstruOneHandsHalfBar = \drummode { cymr8 8 <cymr sn> cymr }
 InstruOneHands = \drummode { \repeat unfold 2 \InstruOneHandsHalfBar }
@@ -76,27 +120,16 @@ InstruOne = \drummode {
   \AFill
 }
 
-drumsMusic = \drummode <<
-  {
-    \intro
-    <<
-      \repeat volta 2 \A
-      \context Staff = "ossia" {
-        s1*3 \startStaff
-        <>^\markup \italic { first round }
-        << \A-h \\ { bd4. 8 8 4 8 } >>
-        \stopStaff
-      }
-    >>
-    \B \bar "||"
-    \InstruOne
-    \repeat volta 2 \A
-    \repeat volta 2 \B
+drumsMusic = \drummode {
+  \intro
+  \repeat volta 2 \keepWithTag #'first-round \A
+  \keepWithTag #'(first-round normal) \B
+  \bar "||"
+  \InstruOne
+  \repeat volta 2 \keepWithTag #'second-round \A
+  \repeat volta 2 \keepWithTag #'second-round \BFirstSix
+  \alternative {
+    \keepWithTag #'normal \BLastTwo
+    \keepWithTag #'pre-solo \BLastTwo
   }
-  \new DrumStaff = "ossia" \with {
-    \remove "Time_signature_engraver"
-    \hide Clef
-    \magnifyStaff #2/3
-    \RemoveAllEmptyStaves
-  } { \stopStaff s1*56 }
->>
+}
