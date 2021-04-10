@@ -79,7 +79,7 @@ BFirstSix = \drummode {
        \magnifyMusic #2/3 {
          s2
          <>_\markup \italic { second time }
-         bd8 4 8
+         \once \override NoteColumn.force-hshift = #1.0 bd8 4 8
        }
      }
   >>
