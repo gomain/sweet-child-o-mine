@@ -4,7 +4,8 @@
   (crashcymbal cross #f 6)
   (bassdrum default #f -3)
   (snare default #f 1)
-  (highfloortom default #f -1)))
+  (highfloortom default #f -1)
+  (pedalhihat cross #f -5)))
 
 \version "2.22.0"
 \include "drums.ly"
