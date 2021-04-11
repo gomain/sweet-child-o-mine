@@ -71,8 +71,10 @@ A = \drummode <<
 >>
 BFirstSix = \drummode {
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  \tag #'first-round << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4 8 } >>
-  \tag #'second-round << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
+  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\
+       \tag #'first-round { bd4. 8~ 8 4 8 }
+       \tag #'second-round { bd4. 8~ 8 4. }
+  >>
   << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
   << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\
      { bd4. 8 2 } \\
