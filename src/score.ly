@@ -30,6 +30,7 @@
   \score {
     \header {
       title = "Sweet Child O'Mine"
+      subtitle = "(Alternate Version)"
       composer = "Guns N' Roses"
     }
     \new DrumStaff \with { instrumentName = "Drums" } {
