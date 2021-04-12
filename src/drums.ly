@@ -1,6 +1,6 @@
 intro-guitar =  {
   \compressMMRests {
-    <>_\markup { \italic "Guitar solo..." }
+    <>_\markup \italic { Guitar solo... }
     \override MultiMeasureRest.expand-limit = #1
     R1*8
   }
@@ -10,10 +10,13 @@ build-up = \drummode {
       <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
       \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
         {
-          <sn tomfh>4 \grace sn8 sn4^>
+          \tag #'(intro pre-solo) { <sn tomfh>4 \grace sn8 sn4^> }
+          \tag #'solo { <sn tomfh>8 8 \grace sn8 sn4^> }
         } \\
         {
-          r8 \tag #'intro { bd4 bd8 } \tag #'pre-solo { bd4. }
+          \tag #'intro { r8 bd4 bd8 }
+          \tag #'pre-solo { r8 bd4. }
+          \tag #'solo { r4. bd8 }
         }
       >>
   }
@@ -91,11 +94,26 @@ B = \drummode {
   }
 }
 InstruOne = \drummode {
+  <>_\markup \italic { Guitar solo... }
   << { cymc4 <cymr sn>8 cymr8 8 8 <cymr sn> cymr } \\ { <bd hhp>4 hhp <bd hhp> hhp8 bd } >>
   \repeat percent 2 << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp <bd hhp> hhp8 bd } >>
   \repeat percent 3 << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp8 bd <bd hhp>4 hhp } >>
   << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp8 bd <bd hhp>4 hhp8 bd } >>
   \keepWithTag #'a-first-round \keepWithTag #'a-fill \A
+}
+Solo = \drummode {
+  <>_\markup \italic { Guitar solo... }
+  \repeat percent 3 << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  << { <cymc cymr>8 cymr8 sn cymc cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  \repeat percent 4 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  \bar "||"
+  \repeat percent 7 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  \keepWithTag #'solo \build-up
+  \repeat unfold 4 {
+    << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+    \repeat percent 2 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+    << { <cymc cymr>8 cymr8 <cymr sn> cymr cymc4 4 } \\ { bd2 4 4 } >>
+  }
 }
   
 drumsMusic = \drummode {
@@ -110,4 +128,6 @@ drumsMusic = \drummode {
     \keepWithTag #'b-last-two \B
     \keepWithTag #'pre-solo \build-up
   }
+  \bar "||"
+  \Solo
 }
