@@ -1,10 +1,11 @@
 intro-guitar =  {
   \compressMMRests {
     <>_\markup { \italic "Guitar solo..." }
-    \override MultiMeasureRest.expand-limit = #1 R1*8  }
-    \bar "||"
+    \override MultiMeasureRest.expand-limit = #1
+    R1*8
+  }
 }
-BuildUp = \drummode {
+build-up = \drummode {
   \stemUp {
       <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
       \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
@@ -28,54 +29,40 @@ intro-drums = \drummode {
       1
     }
   >>
-  \keepWithTag #'intro \BuildUp
+  \keepWithTag #'intro \build-up
 }
 
 intro = {
   \intro-guitar
+  \bar "||"
   \intro-drums
 }
 
-A-h = \drummode { hh4 <hh sn>^> hh <hh sn>^> }
-A-f = \drummode { bd4. 8 4. 8 }
-A-p = << \A-h \\ \A-f >>
-APreFill = \drummode << { hh4 <hh sn>^> cymr8 8 <cymr sn>8^> cymr } \\ { bd4. 8 <bd hhp>4 hhp } >>
-AFill = \drummode <<
-  {
-    cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^>
-  } \\ {
-    <bd hhp>4. bd8~ 8 4 8
-  }
->>
-
-A-fill = {
-  \APreFill
-  \AFill
+A = \drummode {
+  \tagGroup #'(first-round second-round)
+  \tag #'first-six <<
+    \repeat percent 6 << { hh4 <hh sn>^> hh <hh sn>^> } \\ { bd4. bd8 bd4. bd 8 } >>
+    \new DrumVoice { \voiceFour \magnifyMusic #2/3 {
+      s1*3
+      \tag #'first-round {
+        <>_\markup \italic { first time }
+      }
+      \tag #'second-round {
+        <>_\markup \italic { second time }
+      }
+      { bd4. 8 8 4 8 }
+    }}
+  >>
+  \tag #'pre-fill << { hh4 <hh sn>^> cymr8 8 <cymr sn> cymr } \\ { bd4. 8 <bd hhp>4 hhp } >>
+  \tag #'fill << { cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^> } \\ { <bd hhp>4. bd8~ 8 4 8 } >>
 }
-A = \drummode <<
-  {
-    \repeat percent 6 \A-p
-    \A-fill
-  }
-  \new DrumVoice { \voiceFour \magnifyMusic #2/3 {
-    s1*3
-    \tag #'first-round {
-      <>_\markup \italic { first time }
-    }
-    \tag #'second-round {
-      <>_\markup \italic { second time }
-    }
-    bd4. 8 8 4 8
-
-  }}
->>
 BFirstSix = \drummode {
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\
+  << { cymc4 sn8 cymc8~ 4 <hh sn>4 } \\
        \tag #'first-round { bd4. 8~ 8 4 8 }
        \tag #'second-round { bd4. 8~ 8 4. }
   >>
-  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+  << { cymc4 <hh sn>4  cymr8 8 <cymr sn> cymr } \\ { bd4. 8 4. 8 } >>
   << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\
      { bd4. 8 2 } \\
      \tag #'second-round {
@@ -91,7 +78,7 @@ BFirstSix = \drummode {
   << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
 }
 BLastTwo = \drummode {
-  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ \A-f >>
+  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ { bd4. 8 4. 8 } >>
   << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
 }
 B = {
@@ -106,8 +93,8 @@ InstruOne = \drummode {
   << { cymc8 cymr8 <cymr sn> cymr \InstruOneHandsHalfBar } \\ \InstruOneFeet >>
   \repeat percent 2 \InstruOnePattern
   \repeat percent 3 << \InstruOneHands \\ { bd4. 8 2 } >>
-  << \InstruOneHands \\ \A-f >>
-  \AFill
+  << \InstruOneHands \\ { bd4. 8 4. 8 } >>
+  \keepWithTag #'fill \A
 }
 
 drumsMusic = \drummode {
@@ -120,6 +107,6 @@ drumsMusic = \drummode {
   \repeat volta 2 \keepWithTag #'second-round \BFirstSix
   \alternative {
     \BLastTwo
-    \keepWithTag #'pre-solo \BuildUp
+    \keepWithTag #'pre-solo \build-up
   }
 }
