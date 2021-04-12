@@ -39,74 +39,75 @@ intro = {
 }
 
 A = \drummode {
-  \tagGroup #'(first-round second-round)
-  \tag #'first-six <<
+  \tagGroup #'(a-first-six a-pre-fill a-fill)
+  \tagGroup #'(a-first-round a-second-round)
+  \tag #'a-first-six <<
     \repeat percent 6 << { hh4 <hh sn>^> hh <hh sn>^> } \\ { bd4. bd8 bd4. bd 8 } >>
     \new DrumVoice { \voiceFour \magnifyMusic #2/3 {
       s1*3
-      \tag #'first-round {
+      \tag #'a-first-round {
         <>_\markup \italic { first time }
       }
-      \tag #'second-round {
+      \tag #'a-second-round {
         <>_\markup \italic { second time }
       }
       { bd4. 8 8 4 8 }
     }}
   >>
-  \tag #'pre-fill << { hh4 <hh sn>^> cymr8 8 <cymr sn> cymr } \\ { bd4. 8 <bd hhp>4 hhp } >>
-  \tag #'fill << { cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^> } \\ { <bd hhp>4. bd8~ 8 4 8 } >>
+  \tag #'a-pre-fill
+    \tag #'a-first-round << { hh4 <hh sn>^> cymr8 8 <cymr sn> cymr } \\ { bd4. 8 <bd hhp>4 hhp } >>
+    \tag #'a-second-round << { hh4 <hh sn>^> hh4 <hh sn>^> } \\ { bd4. 8 2 } >>
+  \tag #'a-fill
+    \tag #'a-first-round << { cymr8 <cymc sn>8^> cymr8 8 <sn cymc>4^> 4^> } \\ { <bd hhp>4. bd8~ 8 4 8 } >>
+    \tag #'a-second-round << { hh8 <cymc sn>8^> hh8 8 <sn cymc>4^> 4^> } \\ { bd4. bd8~ 8 4 8 } >>
 }
-BFirstSix = \drummode {
-  << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymc4 sn8 cymc8~ 4 <hh sn>4 } \\
-       \tag #'first-round { bd4. 8~ 8 4 8 }
-       \tag #'second-round { bd4. 8~ 8 4. }
-  >>
-  << { cymc4 <hh sn>4  cymr8 8 <cymr sn> cymr } \\ { bd4. 8 4. 8 } >>
-  << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\
-     { bd4. 8 2 } \\
-     \tag #'second-round {
-       \voiceFour
-       \magnifyMusic #2/3 {
-         s2
-         <>_\markup \italic { second time }
-         \once \override NoteColumn.force-hshift = #1.0 bd8 4 8
+B = \drummode {
+  \tagGroup #'(b-first-six b-last-two)
+  \tagGroup #'(b-first-round b-second-round)
+  \tag #'b-first-six {
+    << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+    << { cymc4 sn8 cymc8~ 4 <hh sn>4 } \\
+         \tag #'b-first-round { bd4. 8~ 8 4 8 }
+         \tag #'b-second-round { bd4. 8~ 8 4. }
+    >>
+    << { cymc4 <cymr sn>8 cymr8 8 8 <cymr sn> cymr } \\ { bd4 hhp8 bd8 <bd hhp>4 hhp8 bd8 } >>
+    << \repeat unfold 2 { cymr8 8 <cymr sn> cymr } \\
+       { <bd hhp>4 hhp8 bd8 <bd hhp>4 hhp } \\
+       \tag #'b-second-round {
+         \voiceFour
+         \magnifyMusic #2/3 {
+           s2
+           <>_\markup \italic { second time }
+           \override NoteColumn.force-hshift = #1.0 <bd hhp>8 bd hhp bd
+         }
        }
-     }
-  >>
-  << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
-  << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
+    >>
+    << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+    << { cymc4 sn8 cymc8~ 8 hh8 <hh sn>4 } \\ { bd4. 8~ 8 4. } >>
+  }
+  \tag #'b-last-two {
+    << { cymc4 <cymr sn>8 cymr8 8 8 <cymr sn> cymr } \\ { bd4 hhp8 bd8 <bd hhp>4 hhp8 bd8 } >>
+    << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { <bd hhp>4 hhp8 bd8 <bd hhp>4 r } >>
+  }
 }
-BLastTwo = \drummode {
-  << { cymc4 <hh sn>8 hh cymr8 8 <cymr sn> cymr } \\ { bd4. 8 4. 8 } >>
-  << { cymr8 8 <cymr sn> cymr 8 8 <cymc sn>8 4} \\ { bd4. 8 4 r } >>
-}
-B = {
-  \BFirstSix
-  \BLastTwo
-}
-InstruOneHandsHalfBar = \drummode { cymr8 8 <cymr sn> cymr }
-InstruOneHands = \drummode { \repeat unfold 2 \InstruOneHandsHalfBar }
-InstruOneFeet = \drummode { bd2 4. 8 }
-InstruOnePattern = << \InstruOneHands \\ \InstruOneFeet >>
 InstruOne = \drummode {
-  << { cymc8 cymr8 <cymr sn> cymr \InstruOneHandsHalfBar } \\ \InstruOneFeet >>
-  \repeat percent 2 \InstruOnePattern
-  \repeat percent 3 << \InstruOneHands \\ { bd4. 8 2 } >>
-  << \InstruOneHands \\ { bd4. 8 4. 8 } >>
-  \keepWithTag #'fill \A
+  << { cymc4 <cymr sn>8 cymr8 8 8 <cymr sn> cymr } \\ { <bd hhp>4 hhp <bd hhp> hhp8 bd } >>
+  \repeat percent 2 << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp <bd hhp> hhp8 bd } >>
+  \repeat percent 3 << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp8 bd <bd hhp>4 hhp } >>
+  << { cymr8 8 <cymr sn> cymr8 8 8 <cymr sn>8 cymr8 } \\ { <bd hhp>4 hhp8 bd <bd hhp>4 hhp8 bd } >>
+  \keepWithTag #'a-first-round \keepWithTag #'a-fill \A
 }
-
+  
 drumsMusic = \drummode {
   \intro
-  \repeat volta 2 \keepWithTag #'first-round \A
-  \keepWithTag #'first-round \B
+  \repeat volta 2 \keepWithTag #'a-first-round \A
+  \keepWithTag #'b-first-round \B
   \bar "||"
   \InstruOne
-  \repeat volta 2 \keepWithTag #'second-round \A
-  \repeat volta 2 \keepWithTag #'second-round \BFirstSix
+  \repeat volta 2 \keepWithTag #'a-second-round \A
+  \repeat volta 2 \keepWithTag #'b-second-round \keepWithTag #'b-first-six \B
   \alternative {
-    \BLastTwo
+    \keepWithTag #'b-last-two \B
     \keepWithTag #'pre-solo \build-up
   }
 }
