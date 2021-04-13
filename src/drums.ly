@@ -27,11 +27,11 @@ build-up = \drummode {
 intro-drums = \drummode {
   \repeat percent 3 <<
     {
-      cymc4^> hh4 4 8 \tuplet 3/2 { cymr16 16 16 }
-      cymr4 hh4 4 4
+      cymc2..^>  \tuplet 3/2 { cymr16 16 16 }
+      cymr1
     } \\ {
-      bd1~
-      1
+      <bd hhp>4 hhp4 4 4
+      4 4 4 4
     }
   >>
   \keepWithTag #'intro \build-up
@@ -154,9 +154,9 @@ Outtro = \drummode {
   }
   << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
   << { cymc4 sn8 cymc8~ 4 \grace sn 8 4^> } \\ { bd4. 8~ 8 4 8 } >>
-  << { cymc4 hh4 hh hh } \\ { bd1 } >>
+  << { cymc1 } \\ { <bd hhp>4 hhp4 4 4 } >>
   <>_\markup \bold \italic { rit... }
-  << { cymc4 hh cymc hh } \\ { bd2 bd2 } >>
+  << { cymc2 2 } \\ { <bd hhp>4 hhp <bd hhp> hhp } >>
   << { cymc1 \fermata } \\ { bd1 \fermata } >>
 }
 drumsMusic = \drummode {
