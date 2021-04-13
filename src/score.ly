@@ -14,7 +14,7 @@
 \version "2.22.0"
 \include "drums.ly"
 \paper {
-  top-margin = #12
+  top-margin = #5
   markup-system-spacing.basic-distance = #15
   system-system-spacing.basic-distance = #15
   print-all-headers = ##t

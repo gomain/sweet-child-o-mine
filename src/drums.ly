@@ -111,11 +111,11 @@ Solo = \drummode {
   \bar "||"
   \repeat percent 7 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
   \keepWithTag #'solo \build-up
-  \repeat unfold 4 {
-    << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
-    \repeat percent 2 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
-    << { <cymc cymr>8 cymr8 <cymr sn> cymr cymc4 4 } \\ { bd2 4 4 } >>
-  }
+  \set Score.repeatCommands = #'(start-repeat (volta "1.-4."))
+  << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  \repeat percent 2 << { <cymc cymr>8 cymr8 <cymr sn> <cymc cymr> cymr8 8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  << { <cymc cymr>8 cymr8 <cymr sn> cymr cymc4 4 } \\ { bd2 4 4 } >>
+  \set Score.repeatCommands = #'(end-repeat (volta #f))
 }
 WhereDoWeGo = \drummode {
 
