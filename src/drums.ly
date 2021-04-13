@@ -6,22 +6,24 @@ intro-guitar =  {
   }
 }
 build-up = \drummode {
-  \stemUp {
-      <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
-      \repeat unfold 3 <sn tomfh bd> <sn tomfh bd>\! } <<
-        {
-          \tag #'(intro pre-solo) { <sn tomfh>4 \grace sn8 sn4^> }
-          \tag #'solo { <sn tomfh>8 8 \grace sn8 sn4^> }
-        } \\
-        {
-          \tag #'intro { r8 bd4 bd8 }
-          \tag #'pre-solo { r8 bd4. }
-          \tag #'solo { r4. bd8 }
-        }
-      >>
-  }
-
-
+  \stemUp <cymc sn>8^> <sn tomfh bd>\< \repeat unfold 6 <sn tomfh bd>
+  {
+    \tag #'(intro pre-solo solo) { \repeat unfold 4 <sn tomfh bd> }
+    \tag #'outtro << { <tomh toml>4 4 } \\ { bd8 8 8 8 } >>
+  }\!
+  <<
+    {
+      \tag #'(intro pre-solo) { <sn tomfh>4 \grace sn8 sn4^> }
+      \tag #'solo { <sn tomfh>8 8 \grace sn8 sn4^> }
+      \tag #'outtro { \grace sn8 sn4^> \grace sn8 sn4^> }
+    } \\
+    {
+      \tag #'(intro outtro) { r8 bd4 bd8 }
+      \tag #'pre-solo { r8 bd4. }
+      \tag #'solo { r4. bd8 }
+    }
+  >>
+}
 intro-drums = \drummode {
   \repeat percent 3 <<
     {
@@ -115,7 +117,48 @@ Solo = \drummode {
     << { <cymc cymr>8 cymr8 <cymr sn> cymr cymc4 4 } \\ { bd2 4 4 } >>
   }
 }
-  
+WhereDoWeGo = \drummode {
+
+    << { hh8 8 ss hh8 8 8 <hh ss> hh } \\ { bd4. 8~ 2 } >>
+    << { hh4 <hh ss>8 hh8 8 8 <hh ss> hh } \\ { bd4. 8~ 2 } >>
+    << { hh4 <hh ss>8 hh8 8 8 <hh ss> hh } \\ { bd4. 8~ 2 } >>
+    << { hh8 8 <hh ss>4 hh4  <hh ss>4 } \\ { r8 bd4 8 2 } >>
+
+    << { hh4 ss8 hh8 8 8 <hh ss> hh } \\ { bd4. 8~ 2 } >>
+    << { hh4 <hh ss>8 hh8 8 8 <hh ss>4 } \\ { bd4. 8~ 2 } >>
+    << { hh4 <hh ss>4 r8 hh8  <hh ss>8 hh8 } \\ { bd4. 8~ 2 } >>
+    << { hh8 8 <hh ss>4 hh8 8  <hh ss>4 } \\ { r8 bd4 8 2 } >>
+
+    << { hh8 8 ss hh8 8 8 sn^> hh } \\ { bd4. 8~ 2 } >>
+    << { hh4 <hh ss>4 hh8 8 sn4^>  } \\ { bd4. 8~ 2 } >>
+    << { hh8 8 <hh ss>4 hh8 8 sn^> hh } \\ { bd4. 8~ 2 } >>
+    << { hh8 8 <hh ss>8 hh8 8 8  \grace sn8 8^> \grace 8 8^> } \\ { bd4. 8 2 } >>
+
+    << { hh4 <hh sn> hh <hh sn> } \\ { bd4. 8~ 8 4. } >>
+    << { hh4 <hh sn> hh <hh sn> } \\ { bd4. 8~ 8 4 8 } >>
+    \keepWithTag #'outtro \build-up
+}
+Outtro = \drummode {
+  \repeat volta 3 {
+    \repeat percent 2 << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+  }
+  \alternative {
+    {
+      << { cymc4 sn8 cymc8~ 8 cymr8 <cymr sn>8 cymr8 } \\ { bd4. 8~ 8 4. } >>
+      << { cymc8 cymr8 <cymr sn> cymr cymc4 4 } \\ { bd2 4 4 } >>
+    }
+    {
+      << { cymc4 sn8 cymc8~ 4 \grace sn 8 4^> } \\ { bd4. 8~ 8 4. } >>
+      << \tuplet 3/2 2 { cymc4 hhho4 4 4 4 4 } \\ \tuplet 3/2 2 { bd4 4 4 4 4 4 } >>
+    }
+  }
+  << { cymc4 sn8 cymc8~ 4 <hh sn>8 hh8 } \\ { bd4. 8~ 8 4. } >>
+  << { cymc4 sn8 cymc8~ 4 \grace sn 8 4^> } \\ { bd4. 8~ 8 4 8 } >>
+  << { cymc4 hh4 hh hh } \\ { bd1 } >>
+  <>_\markup \bold \italic { rit... }
+  << { cymc4 hh cymc hh } \\ { bd2 bd2 } >>
+  << { cymc1 \fermata } \\ { bd1 \fermata } >>
+}
 drumsMusic = \drummode {
   \intro
   \repeat volta 2 \keepWithTag #'a-first-round \A
@@ -130,4 +173,7 @@ drumsMusic = \drummode {
   }
   \bar "||"
   \Solo
+  \WhereDoWeGo
+  \Outtro
+  \bar "|."
 }

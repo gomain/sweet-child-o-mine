@@ -1,11 +1,15 @@
 #(define mydrums '(
   (hihat cross #f 5)
+  (halfopenhihat cross "halfopen" 5)
   (ridecymbal cross #f 4)
   (crashcymbal cross #f 6)
   (bassdrum default #f -3)
   (snare default #f 1)
+  (hightom default #f 3)
+  (lowtom default #f 2)
   (highfloortom default #f -1)
-  (pedalhihat cross #f -5)))
+  (pedalhihat cross #f -5)
+  (sidestick cross #f 1)))
 
 \version "2.22.0"
 \include "drums.ly"
